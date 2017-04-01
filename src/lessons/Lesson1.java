@@ -67,7 +67,7 @@ class Lesson1 {
         "alpha", "bravo", "charlie", "delta", "echo", "foxtrot"));
 
       List<String> listWithoutWordsWithOddLength =
-              list.stream().filter(string -> string.length() % 2 != 0).collect(Collectors.toList());
+              list.stream().filter(word -> word.length() % 2 != 0).collect(Collectors.toList());
 
       System.out.println("Exercise 2 result = " + listWithoutWordsWithOddLength);
   }
@@ -81,7 +81,10 @@ class Lesson1 {
     List<String> list = new ArrayList<>(Arrays.asList(
         "alpha", "bravo", "charlie", "delta", "echo", "foxtrot"));
 
-    /* YOUR CODE HERE */
+    List<String> listWithUpperCaseWords =
+            list.stream().map(String::toUpperCase).collect(Collectors.toList());
+
+      System.out.println("Exercise 3 result = " + listWithUpperCaseWords);
   }
 
   /**
