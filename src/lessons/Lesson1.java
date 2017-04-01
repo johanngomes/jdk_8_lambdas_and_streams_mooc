@@ -118,12 +118,14 @@ class Lesson1 {
     /**
    * Exercise 5
    *
-   * Create a new thread that prints the numbers from the list.
+   * Return the sum of all numbers in the list.
    */
   private void exercise5() {
-    List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+      List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-    /* YOUR CODE HERE */
+      Integer maxNumber = list.stream().mapToInt(Integer::intValue).max().getAsInt();
+
+      System.out.println("Exercise 5 result = " + maxNumber);
   }
 
   /**
