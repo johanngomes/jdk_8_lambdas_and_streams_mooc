@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 /**
  * @author Speakjava (Simon Ritter)
@@ -45,12 +46,14 @@ class Lesson1 {
    * of Strings provided.
    */
   private void exercise1() {
-    List<String> list = Arrays.asList(
+      List<String> list = Arrays.asList(
         "alpha", "bravo", "charlie", "delta", "echo", "foxtrot");
 
-      StringBuilder sb = new StringBuilder();
-      list.forEach(s -> sb.append(s.charAt(0)));
-      String result = sb.toString();
+      StringBuilder stringBuilder = new StringBuilder();
+
+      list.forEach(string -> stringBuilder.append(string.charAt(0)));
+      String result = stringBuilder.toString();
+
       System.out.println("Exercise 1 result = " + result);;
   }
 
@@ -60,10 +63,13 @@ class Lesson1 {
    * Remove the words that have odd lengths from the list.
    */
   private void exercise2() {
-    List<String> list = new ArrayList<>(Arrays.asList(
+      List<String> list = new ArrayList<>(Arrays.asList(
         "alpha", "bravo", "charlie", "delta", "echo", "foxtrot"));
 
-    /* YOUR CODE HERE */
+      List<String> listWithoutWordsWithOddLength =
+              list.stream().filter(string -> string.length() % 2 != 0).collect(Collectors.toList());
+
+      System.out.println("Exercise 2 result = " + listWithoutWordsWithOddLength);
   }
 
   /**
