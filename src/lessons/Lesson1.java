@@ -78,10 +78,10 @@ class Lesson1 {
    * Replace every word in the list with its upper case equivalent.
    */
   private void exercise3() {
-    List<String> list = new ArrayList<>(Arrays.asList(
+      List<String> list = new ArrayList<>(Arrays.asList(
         "alpha", "bravo", "charlie", "delta", "echo", "foxtrot"));
 
-    List<String> listWithUpperCaseWords =
+      List<String> listWithUpperCaseWords =
             list.stream().map(String::toUpperCase).collect(Collectors.toList());
 
       System.out.println("Exercise 3 result = " + listWithUpperCaseWords);
@@ -94,15 +94,28 @@ class Lesson1 {
    * into a single string, in iteration order.
    */
   private void exercise4() {
-    Map<String, Integer> map = new TreeMap<>();
-    map.put("c", 3);
-    map.put("b", 2);
-    map.put("a", 1);
+      Map<String, Integer> map = new TreeMap<>();
+      map.put("c", 3);
+      map.put("b", 2);
+      map.put("a", 1);
 
-    /* YOUR CODE HERE */
+      StringBuilder stringBuilder = new StringBuilder();
+
+      List<String> listWithKeyPlusValueStrings =
+              map.entrySet().stream()
+                      .map(this::buildStringWithKeyPlusValue)
+                      .collect(Collectors.toList());
+
+      listWithKeyPlusValueStrings.forEach(stringBuilder::append);
+
+      System.out.println("Exercice 4 result = " + stringBuilder);
   }
 
-  /**
+    private String buildStringWithKeyPlusValue(Map.Entry<String, Integer> stringWithKeyPlusValue) {
+        return stringWithKeyPlusValue.getKey() + stringWithKeyPlusValue.getValue();
+    }
+
+    /**
    * Exercise 5
    *
    * Create a new thread that prints the numbers from the list.
