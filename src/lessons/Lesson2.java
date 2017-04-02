@@ -82,13 +82,22 @@ public class Lesson2 {
    * where each word is separated by a hyphen (-). Print the resulting string.
    */
   private void exercise3() {
-    List<String> list = Arrays.asList(
+      List<String> list = Arrays.asList(
         "The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog");
 
-    /* YOUR CODE HERE */
+
+      String listWithQuickBrownFox = list.stream()
+              .filter(word -> isSecondThirdOrForthString(list, word))
+              .collect(Collectors.joining("-"));
+
+      System.out.println("Exercise 2 result: " + listWithQuickBrownFox);
   }
 
-  /**
+    private boolean isSecondThirdOrForthString(List<String> list, String word) {
+        return (list.indexOf(word) == 1) || (list.indexOf(word) == 2) || (list.indexOf(word) == 3);
+    }
+
+    /**
    * Count the number of lines in the file using the BufferedReader provided
    */
   private void exercise4() throws IOException {
