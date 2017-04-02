@@ -11,6 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -126,7 +127,7 @@ public class Lesson2 {
                 .peek(word -> System.out.println("Word: " + word))
                 .collect(Collectors.toList());
 
-        uniqueWords.forEach(word -> System.out.println("Word from uniqueWords list: " + word));
+        uniqueWords.forEach(word -> System.out.println("Exercise 5 result: " + word));
     }
   }
   
@@ -139,7 +140,14 @@ public class Lesson2 {
     try (BufferedReader reader = Files.newBufferedReader(
         Paths.get("SonnetI.txt"), StandardCharsets.UTF_8))
     {
+        List<String> uniqueLowerCasedWordsInNaturalOrder = reader.lines()
+                .flatMap(line -> Stream.of(line.split(WORD_REGEXP)))
+                .distinct()
+                .sorted(Comparator.naturalOrder())
+                .map(word -> word.toLowerCase())
+                .collect(Collectors.toList());
 
+        System.out.println("Exercise 6 result: " + uniqueLowerCasedWordsInNaturalOrder);
     }
   }
   
