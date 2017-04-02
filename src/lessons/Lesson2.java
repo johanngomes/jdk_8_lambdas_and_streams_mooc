@@ -90,7 +90,7 @@ public class Lesson2 {
               .filter(word -> isSecondThirdOrForthString(list, word))
               .collect(Collectors.joining("-"));
 
-      System.out.println("Exercise 2 result: " + listWithQuickBrownFox);
+      System.out.println("Exercise 3 result: " + listWithQuickBrownFox);
   }
 
     private boolean isSecondThirdOrForthString(List<String> list, String word) {
@@ -101,10 +101,13 @@ public class Lesson2 {
    * Count the number of lines in the file using the BufferedReader provided
    */
   private void exercise4() throws IOException {
-    try (BufferedReader reader = Files.newBufferedReader(
-        Paths.get("SonnetI.txt"), StandardCharsets.UTF_8)) {
-      /* YOUR CODE HERE */
-    }
+      try (BufferedReader reader = Files.newBufferedReader(
+          Paths.get("SonnetI.txt"), StandardCharsets.UTF_8))
+      {
+          long numberOfLines = reader.lines().count();
+
+          System.out.println("Exercise 4 result: " + numberOfLines);
+      }
   }
   
   /**
