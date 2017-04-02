@@ -13,6 +13,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Speakjava (Simon Ritter)
@@ -118,8 +119,14 @@ public class Lesson2 {
    */
   private void exercise5() throws IOException {
     try (BufferedReader reader = Files.newBufferedReader(
-        Paths.get("SonnetI.txt"), StandardCharsets.UTF_8)) {
-      /* YOUR CODE HERE */
+        Paths.get("SonnetI.txt"), StandardCharsets.UTF_8))
+    {
+        List<String> uniqueWords = reader.lines()
+                .flatMap(line -> Stream.of(line.split(WORD_REGEXP)))
+                .peek(word -> System.out.println("Word: " + word))
+                .collect(Collectors.toList());
+
+        uniqueWords.forEach(word -> System.out.println("Word from uniqueWords list: " + word));
     }
   }
   
@@ -130,8 +137,9 @@ public class Lesson2 {
    */
   private void exercise6() throws IOException {
     try (BufferedReader reader = Files.newBufferedReader(
-        Paths.get("SonnetI.txt"), StandardCharsets.UTF_8)) {
-      /* YOUR CODE HERE */
+        Paths.get("SonnetI.txt"), StandardCharsets.UTF_8))
+    {
+
     }
   }
   
