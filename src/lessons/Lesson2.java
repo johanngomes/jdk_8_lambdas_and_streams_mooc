@@ -157,7 +157,15 @@ public class Lesson2 {
   private void exercise7() throws IOException {
     try (BufferedReader reader = Files.newBufferedReader(
         Paths.get("SonnetI.txt"), StandardCharsets.UTF_8)) {
-      /* YOUR CODE HERE */
+
+        List<String> uniqueLowerCasedWordsByLengthOrder = reader.lines()
+                .flatMap(line -> Stream.of(line.split(WORD_REGEXP)))
+                .distinct()
+                .sorted((word1, word2) -> Integer.compare(word1.length(), word2.length()))
+                .map(word -> word.toLowerCase())
+                .collect(Collectors.toList());
+
+        System.out.println("Exercise 7 result: " + uniqueLowerCasedWordsByLengthOrder);
     }
   }
 
